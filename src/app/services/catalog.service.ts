@@ -16,7 +16,7 @@ export class CatalogService {
         fromObject: { limit: 10 }
       })
     }).pipe(
-      // delay(3000),
+      delay(1000),
       catchError(this.handleError.bind(this))
     )
   }

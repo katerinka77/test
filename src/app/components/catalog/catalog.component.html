@@ -1,7 +1,7 @@
 <button (click)="handleToggle()" class="button">Создать новый продукт</button>
 
 <div *ngIf="vm$ | async as vm" class="catalog">
-  <div *ngIf="vm.isLoading && !vm.catalog">Loading...</div>
+  <div *ngIf="vm.isLoading && !vm.catalog.length">Loading...</div>
 
   <div *ngIf="vm.error" class="catalog__error">
     Что то пошло не так: попробуйте обновить страницу
