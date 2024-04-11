@@ -1,0 +1,28 @@
+.catalog {
+  margin: 20px auto;
+  width: 100%;
+
+  &__error {
+    color: red;
+    font-size: 14px;
+    padding: 4px 8px;
+    max-width: 60dvw;
+    background-color: #fff;
+    border-radius: 4px;
+  }
+
+  &__content {
+    display: flex;
+    max-width: 94dvw;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 1dvw;
+  }
+
+  &__wrapper-product {
+    width: 22dvw;
+    min-height: 300px;
+    display: flex;
+
+  }
+}

@@ -1,0 +1,43 @@
+.form-create {
+  &__block {
+    margin: 5px 0 10px;
+
+    label {
+      width: 100%;
+      margin-bottom: 8px;
+      font-weight: 500;
+      display: inline-block;
+      text-align: left;
+    }
+  }
+
+  textarea {
+    outline: none;
+    border: 1px solid #999;
+    overflow: auto;
+    resize: vertical;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+
+  input[type='text'] {
+    height: 20px;
+    border: 1px #ccc solid;
+    width: 100%;
+  }
+
+  &__button {
+    margin-top: 15px;
+  }
+
+  &__error {
+    color: red;
+    font-size: 12px;
+  }
+
+  &__rate {
+    display: flex;
+    align-items: center;
+  }
+}

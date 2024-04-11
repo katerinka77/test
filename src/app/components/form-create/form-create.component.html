@@ -1,0 +1,72 @@
+<div *ngIf="createForm" [formGroup]="createForm" class="form-create">
+  <div class="form-create__block">
+    <label for="title">Title*: </label>
+    <textarea formControlName="title" id="title" type="text"></textarea>
+    @if (createForm.controls['title'].touched) {
+    <p
+      *ngIf="!createForm?.controls?.['title']?.value?.length"
+      class="form-create__error"
+    >
+      Поле обязательно для заполнения
+    </p>
+    <p
+      *ngIf="createForm?.controls?.['title']?.errors?.['forbiddenValue']?.value?.length"
+      class="form-create__error"
+    >
+      Заголовок может содержать только буквы
+    </p>
+    <p
+      *ngIf="createForm?.controls?.['title']?.errors?.['minlength']"
+      class="form-create__error"
+    >
+      Заголовок должен содержать минимум 3 буквы
+    </p>
+    }
+  </div>
+  <div class="form-create__block">
+    <label for="price">Price*: </label>
+    <input formControlName="price" id="price" type="text" />
+    @if (createForm.controls['price'].touched) {
+    <p
+      *ngIf="createForm.controls['price'].errors?.['forbiddenValue'].value.length"
+      class="form-create__error"
+    >
+      Цена может содержать только цифры
+    </p>
+    }
+  </div>
+  <div class="form-create__block">
+    <label for="description">Description*: </label>
+    <textarea
+      formControlName="description"
+      rows="8"
+      id="description"
+      type="text"
+    ></textarea>
+  </div>
+  <div class="form-create__block">
+    <label for="category">Category*: </label>
+    <input formControlName="category" id="category" type="text" />
+  </div>
+  <app-rate-input
+    class="form-create__rate"
+    formControlName="rate"
+    (label)="('Rate')"
+  ></app-rate-input>
+
+  @if (this.createForm.status === 'INVALID' && this.createForm.touched) {
+  <p class="form-create__error">Все поля обязательны для заполнения</p>
+  }
+
+  <button
+    (click)="handleSend()"
+    [disabled]="!createForm.touched"
+    class="button button_blue form-create__button"
+  >
+    @if(changeableProduct) {
+      Изменить
+    } @else {
+      Создать новый продукт
+    }
+  </button>
+</div>

@@ -1,0 +1,14 @@
+<p class="rating-area__title">Rate:</p>
+
+<div class="rating-area">
+  <ng-container *ngFor="let i of [5, 4, 3, 2, 1]">
+    <input
+      [formControl]="starControl"
+      type="radio"
+      name="{{ randomString }}"
+      id="{{ randomString }}{{ i }}"
+      [value]="i"
+    />
+    <label for="{{ randomString }}{{ i }}" title="Оценка «{{ i }}»"></label>
+  </ng-container>
+</div>

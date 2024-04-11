@@ -1,0 +1,6 @@
+<div class="modal" #modal *ngIf="isShow">
+  <div class="modal__wrapper">
+    <ng-content></ng-content>
+    <span (click)="close()" class="modal__close">X</span>
+  </div>
+</div>

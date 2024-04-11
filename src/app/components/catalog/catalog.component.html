@@ -1,0 +1,32 @@
+<button (click)="handleToggle()" class="button">Создать новый продукт</button>
+
+<div *ngIf="vm$ | async as vm" class="catalog">
+  <div *ngIf="vm.isLoading && !vm.catalog">Loading...</div>
+
+  <div *ngIf="vm.error" class="catalog__error">
+    Что то пошло не так: попробуйте обновить страницу
+  </div>
+
+  <div class="catalog__content">
+    <ng-container *ngFor="let product of vm.catalog">
+      <app-product
+        class="catalog__wrapper-product"
+        [product]="product"
+        (onChange)="handleChangeProduct($event)"
+        (onDelete)="handleDeleteProduct(product.id)"
+      />
+    </ng-container>
+  </div>
+</div>
+
+<ng-container *ngTemplateOutlet="modalCreateProduct"></ng-container>
+
+<ng-template #modalCreateProduct>
+  <app-modal [isShow]="isToggleModalCreateProduct" (onClose)="handleToggle()">
+    <p>Вы создаете новый продукт</p>
+    <app-form-create (onCreate)="handleAddNewProduct($event)"></app-form-create>
+    <button (click)="handleToggle()" class="button button_blue">
+      Отменить
+    </button>
+  </app-modal>
+</ng-template>

@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  background-color: #232f54;
+  padding: 16px;
+  color: #fff
+}
+
+.button {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 4px 12px;
+  text-align: center;
+  vertical-align: middle;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 12px;
+  margin-bottom: 10px;
+
+  &_blue {
+    background-color: aliceblue;
+    border: 1px #ccc solid;
+  }
+}

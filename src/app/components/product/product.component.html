@@ -1,0 +1,50 @@
+<div class="product" *ngIf="product">
+  <div>
+    <p class="product__title">
+      <strong>№ {{ product.id }}: </strong>{{ product.title }}
+    </p>
+    <img [src]="product.image" height="100" width="80" class="product__image" />
+  </div>
+  <div>
+    <button (click)="handleToggleModalChange()" class="button button_blue">
+      Изменить
+    </button>
+    <button (click)="handleShowModalDelete()" class="button button_blue">
+      Удалить
+    </button>
+  </div>
+
+  <ng-container *ngTemplateOutlet="modalDelete"></ng-container>
+  <ng-container *ngTemplateOutlet="modalChange"></ng-container>
+
+  <ng-template #modalDelete>
+    <app-modal [isShow]="isShow" (onClose)="handleShowModalDelete()">
+      <p>
+        Вы уверены, что хотите удалить <strong>{{ product.title }}</strong
+        >?
+      </p>
+      <button (click)="delete()" class="button button_blue">Подтвердить</button>
+      <button (click)="handleShowModalDelete()" class="button button_blue">
+        Отменить
+      </button>
+    </app-modal>
+  </ng-template>
+
+  <ng-template #modalChange>
+    <app-modal
+      [isShow]="isShowModalChange"
+      (onClose)="handleToggleModalChange()"
+    >
+      <p>
+        Редактирование <strong>{{ product.title }}</strong>
+      </p>
+      <app-form-create
+        [changeableProduct]="product"
+        (onCreate)="change($event)"
+      ></app-form-create>
+      <button (click)="handleToggleModalChange()" class="button button_blue">
+        Отменить
+      </button>
+    </app-modal>
+  </ng-template>
+</div>
